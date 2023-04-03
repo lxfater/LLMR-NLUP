@@ -74,3 +74,9 @@ Click it, and a green border will appear. Then you can continue editing the comp
 # End
 The above is a personal, immature idea and exploration. Let's meet in the issue area and there should be a lot of optimization space for the demo.
 
+# Demo video（The previous demo.）
+
+https://www.bilibili.com/video/BV19X4y1r762
+
+Or view the demo on my twitter: https://twitter.com/lxfater
+
