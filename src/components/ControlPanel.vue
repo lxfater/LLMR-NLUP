@@ -42,7 +42,7 @@ const generate = async () => {
   })
   store.controlPanel.freeze = false
   const text = extractHtmlCodeFromMd(answer).join("\n");
-  store.initHistory(text)
+  store.initHistory(`<div style="width:100vw; height:auto" >${text}</div>`)
   store.controlPanel.action = 'edit'
   ElMessage({
     message: 'generate success',

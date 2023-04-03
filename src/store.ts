@@ -118,6 +118,7 @@ export const useMajorStore = defineStore('major', {
         clear() {
             this.page.codes = []
             this.page.codesIndex = -1
+            this.controlPanel.action = 'generate'
         },
         openDrawer() {
             this.drawer.visible = true
