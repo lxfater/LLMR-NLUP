@@ -14,6 +14,7 @@
     "element-plus": "^2.3.2",
     "eventsource-parser": "^1.0.0",
     "expiry-map": "^2.0.0",
+    "html2canvas": "^1.4.1",
     "localforage": "^1.10.0",
     "pinia": "^2.0.33",
     "sobel": "^0.0.11",

@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import html2canvas from 'html2canvas';
 type File = {
     name: string
     content: string,
@@ -62,6 +63,32 @@ export const useMajorStore = defineStore('major', {
         },
     },
     actions: {
+        screenshot() {
+            const element = document.getElementById('nlu-container');
+            html2canvas(element).then(canvas => {
+                // 将Canvas对象转换为Blob对象，并保存到本地
+                canvas.toBlob(blob => {
+                    const fileName = 'screenshot.png';
+                    const url = URL.createObjectURL(blob);
+
+                    const link = document.createElement('a');
+                    link.download = fileName;
+                    link.href = url;
+                    link.click();
+
+                    URL.revokeObjectURL(url);
+                });
+            });
+        },
+        copy() {
+            const element = document.getElementById('nlu-container');
+            const el = document.createElement('textarea');
+            el.value = element?.innerHTML || '';
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand('copy');
+            document.body.removeChild(el);
+        },
         setPage(file: File) {
             this.page = file.page
         },
@@ -131,27 +158,27 @@ export const useMajorStore = defineStore('major', {
         },
         reset() {
 
-             this.page = {
+            this.page = {
                 codes: [],
                 codesIndex: -1,
                 id: 0,
                 prototype: '',
             }
-             this.setting  = {
+            this.setting = {
                 settingDialogVisible: false,
                 sk: '',
                 model: 'gpt-3.5-turbo',
                 maxTokens: "1500"
             }
-             this.drawer = {
+            this.drawer = {
                 visible: false,
                 files: this.drawer.files,
             }
-             this.controlPanel = {
+            this.controlPanel = {
                 forceRender: false,
                 freeze: false,
                 action: 'generate'
-             }
+            }
         }
     },
 })

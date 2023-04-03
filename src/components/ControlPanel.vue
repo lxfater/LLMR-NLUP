@@ -6,14 +6,16 @@ import {
   Delete,
   Setting,
   Files,
-  CloseBold
+  CloseBold,
+  Camera,
+  CopyDocument
 } from '@element-plus/icons'
 import { Openai, Dialog } from '../openai';
 import { ElMessage } from 'element-plus';
 import { computed, ref } from 'vue';
 import { useMajorStore } from '../store';
 import { extractHtmlCodeFromMd, replaceElement } from '../utils';
-import AsciiArt from './AsciiArt.vue';
+import Tips from './tips.vue'
 const question = ref<HTMLTextAreaElement | null>(null)
 const store = useMajorStore()
 
@@ -104,24 +106,33 @@ const placeholder = computed(() => {
         </el-tooltip>
 
         <el-tooltip class="box-item" effect="dark" content="Undo" placement="top">
-          <el-icon size="30" @click="store.pre">
+          <el-icon size="30" @click="store.pre" :disabled="store.page.codesIndex === 0" :color="`${store.page.codesIndex === 0 ? 'gray': 'dark'}`" >
             <RefreshLeft />
           </el-icon>
         </el-tooltip>
 
         <el-tooltip class="box-item" effect="dark" content="Redo" placement="top">
-          <el-icon size="30" @click="store.next">
+          <el-icon size="30" @click="store.next" :disabled="store.page.codesIndex === store.page.codes.length -1" :color="`${store.page.codesIndex === store.page.codes.length -1 ? 'gray': 'dark'}`" >
             <RefreshRight />
           </el-icon>
         </el-tooltip>
-
+        <el-tooltip class="box-item" effect="dark" content="Take a screenshot of the current page." placement="top">
+          <el-icon size="30" @click="store.screenshot">
+            <Camera />
+          </el-icon>
+        </el-tooltip>
+        <el-tooltip class="box-item" effect="dark" content="Copy tailwind css code to clipboard." placement="top">
+          <el-icon size="30" @click="store.copy">
+            <CopyDocument />
+          </el-icon>
+        </el-tooltip>
         <el-tooltip class="box-item" effect="dark" content="Clear current page" placement="top">
           <el-icon size="30" @click="store.clear" color="red">
             <Delete />
           </el-icon>
         </el-tooltip>
       </div>
-
+      <Tips />
       <div class="setting">
         <el-tooltip class="box-item" effect="dark" content="Open settings dialog" placement="top">
           <el-icon size="30" @click="store.openSettingDialog">
@@ -141,6 +152,8 @@ const placeholder = computed(() => {
             <CloseBold />
           </el-icon>
         </el-tooltip>
+
+
       </div>
 
 
@@ -180,7 +193,7 @@ const placeholder = computed(() => {
     justify-content: space-between;
     align-items: center;
     padding: 0 10px;
-    
+
   }
 
   .main {
