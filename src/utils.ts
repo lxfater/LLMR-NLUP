@@ -62,7 +62,7 @@ export function isComponent(element: HTMLElement): boolean {
 
 export function findComponents(root: HTMLElement): HTMLElement[] {
     const components: HTMLElement[] = [root];
-
+    console.log(root)
     // Traverse the DOM and check each element
     const elements = root.querySelectorAll("*");
     elements.forEach((element) => {
@@ -74,51 +74,56 @@ export function findComponents(root: HTMLElement): HTMLElement[] {
     return components;
 }
 
-export function addBorderOnHover(elements: HTMLElement[], hoverStyle: string, selectedStyle:string): void {
-    window.selectedElement = null;
-  
+export function addSelectableBorders(elements: HTMLElement[], selectableStyle: string, selectedStyle: string): void {
     elements.forEach((element) => {
-      element.setAttribute("data-selected", "false");
-      element.setAttribute("data-has-border", "true");
-  
-      element.addEventListener("mouseenter", (event) => {
-        if (window.selectedElement !== element) {
-          element.style.border = hoverStyle;
-          let currentElement = element.parentElement;
-          while (currentElement) {
-            if (currentElement.hasAttribute("data-has-border") && currentElement !== window.selectedElement) {
-              currentElement.style.border = "";
+        element.addEventListener("mouseenter", (event) => {
+            console.log(element)
+            if (window.selectedElement !== element) {
+                element.classList.add(selectableStyle);
+                elements.forEach((el) => {
+                    if (el !== element) {
+                        el.classList.remove(selectableStyle);
+                    }
+                });
+                event.stopPropagation();
             }
-            currentElement = currentElement.parentElement;
-          }
-          event.stopPropagation();
-        }
-      });
-  
-      element.addEventListener("mouseleave", (event) => {
-        if (element !== window.selectedElement) {
-            element.style.border = "";
-        }
-      });
-  
-      element.addEventListener("click", (event: MouseEvent) => {
-        if (element !== window.selectedElement) {
-          if (window.selectedElement) {
-            window.selectedElement.style.border = "";
-          }
-          window.selectedElement = element;
-          element.setAttribute("data-selected", "true");
-          element.style.border = selectedStyle;
-        } 
-        elements.forEach((el) => {
-            if (el !== element) {
-              el.style.border = '';
-              el.setAttribute("data-selected", "false");
+        });
+        element.addEventListener("mouseleave", (event) => {
+            if (element !== window.selectedElement) {
+                element.classList.remove(selectableStyle);
             }
-          });
-        event.stopPropagation();
-      });
+        });
+        element.addEventListener("click", (event: MouseEvent) => {
+            if (element !== window.selectedElement) {
+                if (window.selectedElement) {
+                    window.selectedElement.classList.remove(selectedStyle);
+                }
+                window.selectedElement = element;
+                window.selectedElement.classList.add(selectedStyle);
+            }
+            elements.forEach((el) => {
+                if (el !== element) {
+                    el.classList.remove(selectedStyle);
+                }
+            });
+            event.stopPropagation();
+        });
     });
-  }
-  
-  
+}
+
+export function extractHtmlCodeFromMd(mdText: string) {
+    const htmlBlocks = mdText.match(/```html\n([\s\S]+?)\n```/g);
+    if (!htmlBlocks) return [mdText];
+    const cleanedBlocks = htmlBlocks.map((block) => block.replace(/```(html|htm|HTML)\n|```/g, ""));
+    return cleanedBlocks;
+}
+
+export function replaceElement(originalElement: HTMLElement, replacementHtml: string) {
+    const containerElement = document.createElement("div");
+    containerElement.innerHTML = replacementHtml;
+    const newElement = containerElement.children[0] as HTMLElement;
+    originalElement.replaceWith(newElement);
+    window.selectedElement = newElement;
+}
+
+

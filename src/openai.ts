@@ -1,5 +1,5 @@
 import { createParser } from 'eventsource-parser';
-type Dialog = {
+export type Dialog = {
   role: 'system' | 'user' | 'assistant';
   content: string;
 }
@@ -63,7 +63,7 @@ export class Openai {
         const { signal,onMessage: onData } = options;
         let message = '';
         const body = this.getBody(questions);
-        return new Promise((resolve, reject) => {
+        return new Promise<string>((resolve, reject) => {
           try {
             this.getSSE(this.getUrl(), {
               method: 'POST',

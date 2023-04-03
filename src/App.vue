@@ -1,11 +1,16 @@
 <script setup lang="ts">
 </script>
-
 <template>
-  <Tailwind />
+  <Setting />
+  <Drawer />
+  <ControlPanel/>
+  <Viewer />
 </template>
 <script lang="ts" setup>
-import Tailwind from './components/tailwind.vue'
+import Viewer from './components/Viewer.vue'
+import ControlPanel from './components/ControlPanel.vue'
+import Drawer from './components/FileBrowser.vue'
+import Setting from './components/Setting.vue'
 </script>
 <style scoped>
 </style>
