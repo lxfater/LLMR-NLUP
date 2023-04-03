@@ -31,6 +31,8 @@ watch(() => [store.page.codes.length, store.code], () => {
     overflow-x: hidden;
     scrollbar-width: thin;
     scrollbar-color: #000000 #ffffff;
+    // so that user can select the whole page and edit it
+    padding: 20px;
     &::-webkit-scrollbar {
         width: 6px;
     }
@@ -50,4 +52,3 @@ watch(() => [store.page.codes.length, store.code], () => {
     border: 2px solid green !important;
 }
 </style>
-  
