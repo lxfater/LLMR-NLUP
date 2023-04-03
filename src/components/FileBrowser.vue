@@ -9,10 +9,10 @@ const store = useMajorStore()
 <template>
 <el-drawer v-model="store.drawer.visible"  :with-header="false">
   <div class="drawerContainer">
-    <el-card shadow="hover" v-for="i in store.drawer.files" @click="store.setPage(i)" class="card">
+    <el-card shadow="hover" v-for="i in store.drawer.files" @click.stop="store.setPage(i)" class="card">
       <div class="title">{{ i.name }}</div>
       <div class="action">
-        <el-button type="danger" :icon="Delete" circle @click="store.deletePage" />
+        <el-button type="danger" :icon="Delete" circle @click.stop="store.deletePage" />
       </div>
     </el-card>
   </div>

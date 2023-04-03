@@ -28,7 +28,8 @@ type State = {
     drawer: {
         visible: boolean,
         files: Record<number, File>
-    }
+    },
+    warning: boolean
 
 }
 export const useMajorStore = defineStore('major', {
@@ -54,7 +55,8 @@ export const useMajorStore = defineStore('major', {
                 forceRender: false,
                 freeze: false,
                 action: 'generate'
-            }
+            },
+            warning: true
         }
     },
     getters: {
