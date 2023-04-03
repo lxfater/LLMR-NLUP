@@ -71,5 +71,6 @@ If the component can be modified, a blue border will appear.
 Click it, and a green border will appear. Then you can continue editing the component by entering natural language.
 
 
-
+# End
+The above is a personal, immature idea and exploration. Let's meet in the issue area and there should be a lot of optimization space for the demo.
 
