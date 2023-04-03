@@ -10,7 +10,7 @@ import {
 } from '@element-plus/icons'
 import { Openai, Dialog } from '../openai';
 import { ElMessage } from 'element-plus';
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import { useMajorStore } from '../store';
 import { extractHtmlCodeFromMd, replaceElement } from '../utils';
 import AsciiArt from './AsciiArt.vue';
@@ -85,6 +85,12 @@ const edit = async () => {
   }
 
 }
+const placeholder = computed(() => {
+  if (store.controlPanel.action === 'edit') {
+    return 'Tell me how you would like to edit this component.'
+  }
+  return 'Input the type of page or component you want to generate and provide a detailed description.'
+})
 </script>
 
 <template>
@@ -141,7 +147,7 @@ const edit = async () => {
     </div>
     <div class="main">
       <el-input v-model="question" :autosize="{ minRows: 5, maxRows: 7 }" type="textarea"
-        :placeholder="`store.controlPanel.action === 'generate' ? "Input the type of page or component you want to generate and provide a detailed description.": "Tell me how you would like to edit this component."`"></el-input>
+        :placeholder="placeholder"></el-input>
       <el-button type="primary" :loading="store.controlPanel.freeze" plain v-if="store.controlPanel.action === 'generate'"
         @Click="generate">generate</el-button>
       <el-button type="primary" :loading="store.controlPanel.freeze" plain v-else @Click="edit">edit</el-button>
