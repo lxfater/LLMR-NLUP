@@ -114,13 +114,15 @@ const copy = () => {
         </el-tooltip>
 
         <el-tooltip class="box-item" effect="dark" content="Undo" placement="top">
-          <el-icon size="30" @click="store.pre" :disabled="store.page.codesIndex === 0" :color="`${store.page.codesIndex === 0 ? 'gray': 'dark'}`" >
+          <el-icon size="30" @click="store.pre" :disabled="store.page.codesIndex === 0"
+            :color="`${store.page.codesIndex === 0 ? 'gray' : 'dark'}`">
             <RefreshLeft />
           </el-icon>
         </el-tooltip>
 
         <el-tooltip class="box-item" effect="dark" content="Redo" placement="top">
-          <el-icon size="30" @click="store.next" :disabled="store.page.codesIndex === store.page.codes.length -1" :color="`${store.page.codesIndex === store.page.codes.length -1 ? 'gray': 'dark'}`" >
+          <el-icon size="30" @click="store.next" :disabled="store.page.codesIndex === store.page.codes.length - 1"
+            :color="`${store.page.codesIndex === store.page.codes.length - 1 ? 'gray' : 'dark'}`">
             <RefreshRight />
           </el-icon>
         </el-tooltip>
@@ -169,9 +171,12 @@ const copy = () => {
     <div class="main">
       <el-input v-model="question" :autosize="{ minRows: 5, maxRows: 7 }" type="textarea"
         :placeholder="placeholder"></el-input>
-      <el-button type="primary" :loading="store.controlPanel.freeze" plain v-if="store.controlPanel.action === 'generate'"
-        @Click="generate">generate</el-button>
-      <el-button type="primary" :loading="store.controlPanel.freeze" plain v-else @Click="edit">edit</el-button>
+      <div class="action">
+        <el-button type="primary" :loading="store.controlPanel.freeze" plain
+          v-if="store.controlPanel.action === 'generate'" @Click="generate">generate</el-button>
+        <el-button type="primary" :loading="store.controlPanel.freeze" plain v-else @Click="edit">edit</el-button>
+      </div>
+
     </div>
     <div class="footer"></div>
   </div>
@@ -210,7 +215,12 @@ const copy = () => {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-
+    .action {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    }
     .el-input {
       width: 200px;
       flex: 1;

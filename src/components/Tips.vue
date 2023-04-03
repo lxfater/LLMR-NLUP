@@ -9,7 +9,7 @@
 <script lang="ts" setup>
 import { ref, computed, watchEffect } from 'vue';
 
-const textList = ['Try using larger elements to layout internal elements.', 'Not satisfied or made a mistake, use undo.', 'Capture screenshots or copy code to save your work.'];
+const textList = ['Try using larger elements to layout internal elements.', 'Not satisfied or made a mistake, use undo.', 'Screenshots or copy code to save your work.'];
 const currentIndex = ref(0);
 const show = ref(false);
 
