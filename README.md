@@ -5,6 +5,13 @@
 ## 动态的UI代码都是由openai的模型生成，虽然已经做好防止xxs攻击，但是我无法保证你的安全性，生成代码之前请使用浏览器隐私模式打开本项目，并做好其他你认为有用的防护工作,假如你不理解这句话，请不要运行本项目。
 
 # Proof of concept：Natural Language UI Programming (NLUP) and Large Language Model Rendering (LLMR)
+
+
+
+https://user-images.githubusercontent.com/22794120/229517654-a8c31c15-d277-4a9b-8116-f71a562d2481.mp4
+
+
+
 A simple demo of Natural Language UI Programming (NLUP) and Large Language Model Rendering (LLMR), implemented purely on the front-end using GPT-3.5 technology.
 
 In the future, large language models will enable everyone to have their own unique user interface and api, and this is one way to achieve this vision.
@@ -79,9 +86,11 @@ Click it, and a green border will appear. Then you can continue editing the comp
 # End
 The above is a personal, immature idea and exploration. Let's meet in the issue area and there should be a lot of optimization space for the demo.
 
-# Demo video（The previous demo.）
-
+# Demo video
+## bilibili （The previous demo.）
 https://www.bilibili.com/video/BV19X4y1r762
-
-Or view the demo on my twitter: https://twitter.com/lxfater
+## youtube
+https://www.youtube.com/watch?v=gG1I5SnrdNc
+## my twitter
+view the demo on my twitter: https://twitter.com/lxfater
 
