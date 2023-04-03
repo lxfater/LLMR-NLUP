@@ -4,6 +4,9 @@
             <el-form-item label="API key">
                 <el-input v-model="store.setting.sk" />
             </el-form-item>
+            <el-form-item label="Max tokens">
+                <el-input v-model="store.setting.maxTokens" />
+            </el-form-item>
             <el-form-item label="Model">
                 <el-select v-model="store.setting.model" placeholder="Select your Model">
                     <el-option label="gpt-3.5-turbo" value="gpt-3.5-turbo" />
