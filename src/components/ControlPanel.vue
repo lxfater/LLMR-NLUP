@@ -139,6 +139,9 @@ const copy = () => {
   })
 }
 
+const github = () => {
+  window.open('https://github.com/lxfater/LLMR-NLUP', '_blank')
+}
 watch(() => store.page, (val) => {
   if (store.page.codes.length === 0) {
     store.controlPanel.action = 'generate'
@@ -191,7 +194,7 @@ watch(() => store.page, (val) => {
       <div class="setting">
         <el-tooltip class="box-item" effect="dark" content="Why not star this project on Github?"
           placement="top">
-          <el-icon size="30" @click="store.reset" color="Blue">
+          <el-icon size="30"  color="Blue" @click="github">
             <svg aria-hidden="true" height="24" viewBox="0 0 16 16" version="1.1" width="24" data-view-component="true"
               class="octicon octicon-mark-github">
               <path

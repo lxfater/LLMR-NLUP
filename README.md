@@ -11,6 +11,8 @@
 https://user-images.githubusercontent.com/22794120/229517654-a8c31c15-d277-4a9b-8116-f71a562d2481.mp4
 
 
+[Demo link](nlui.lxfater.com)
+
 
 A simple demo of Natural Language UI Programming (NLUP) and Large Language Model Rendering (LLMR), implemented purely on the front-end using GPT-3.5 technology.
 
