@@ -141,7 +141,7 @@ const edit = async () => {
     </div>
     <div class="main">
       <el-input v-model="question" :autosize="{ minRows: 5, maxRows: 7 }" type="textarea"
-        placeholder="Please input"></el-input>
+        :placeholder="`store.controlPanel.action === 'generate' ? "Input the type of page or component you want to generate and provide a detailed description.": "Tell me how you would like to edit this component."`"></el-input>
       <el-button type="primary" :loading="store.controlPanel.freeze" plain v-if="store.controlPanel.action === 'generate'"
         @Click="generate">generate</el-button>
       <el-button type="primary" :loading="store.controlPanel.freeze" plain v-else @Click="edit">edit</el-button>
