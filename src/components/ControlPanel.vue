@@ -93,6 +93,14 @@ const placeholder = computed(() => {
   }
   return 'Input the type of page or component you want to generate and provide a detailed description.'
 })
+
+const copy = () => {
+  store.copy()
+  ElMessage({
+    message: 'copy success',
+    type: 'success',
+  })
+}
 </script>
 
 <template>
@@ -122,7 +130,7 @@ const placeholder = computed(() => {
           </el-icon>
         </el-tooltip>
         <el-tooltip class="box-item" effect="dark" content="Copy tailwind css code to clipboard." placement="top">
-          <el-icon size="30" @click="store.copy">
+          <el-icon size="30" @click="copy">
             <CopyDocument />
           </el-icon>
         </el-tooltip>
