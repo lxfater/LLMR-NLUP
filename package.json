@@ -15,7 +15,10 @@
     "element-plus": "^2.3.2",
     "eventsource-parser": "^1.0.0",
     "expiry-map": "^2.0.0",
+    "fabric": "^5.3.0",
+    "file-saver": "^2.0.5",
     "html2canvas": "^1.4.1",
+    "jszip": "^3.10.1",
     "localforage": "^1.10.0",
     "pinia": "^2.0.33",
     "sobel": "^0.0.11",
@@ -25,6 +28,7 @@
   },
   "devDependencies": {
     "@types/dompurify": "^3.0.0",
+    "@types/file-saver": "^2.0.5",
     "@vitejs/plugin-vue": "^4.1.0",
     "sass": "^1.60.0",
     "typescript": "^4.9.3",

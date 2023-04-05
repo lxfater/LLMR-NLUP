@@ -127,3 +127,24 @@ export function replaceElement(originalElement: HTMLElement, replacementHtml: st
 }
 
 
+export function getHtml(){
+    const element = document.getElementById('nlu-container');
+    return `<!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script id="css-render" src="https://cdn.tailwindcss.com"></script>
+        <title>Natural Language UI Programming (NLUP) and Large Language Model Rendering (LLMR)</title>
+      </head>
+      <body>
+        ${element?.outerHTML}
+      </body>
+    </html>`
+}
+
+export function getScript() {
+    const script = document.getElementById("css-render");
+    return script?.textContent
+}
+
